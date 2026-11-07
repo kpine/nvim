@@ -47,6 +47,17 @@
       packages = forAllSystems (pkgs: rec {
         neovim = self.wrappers.neovim.wrap { inherit pkgs; };
         default = neovim;
+
+        # Reads Lua live from disk instead of the nix store, for rapid iteration.
+        # Uses $NVIM_CONFIG_DIR if set, otherwise ./nvim relative to the cwd.
+        #   nix run .#neovim-dev
+        #   NVIM_CONFIG_DIR=~/scratch/nvim nix run .#neovim-dev
+        neovim-dev = self.wrappers.neovim.wrap {
+          inherit pkgs;
+          settings.config_directory = pkgs.lib.generators.mkLuaInline ''
+            vim.fn.fnamemodify(os.getenv("NVIM_CONFIG_DIR") or (vim.fn.getcwd() .. "/nvim"), ":p")
+          '';
+        };
       });
 
       # For NixOS configs: `nixpkgs.overlays = [ inputs.nixvim.overlays.default ]`

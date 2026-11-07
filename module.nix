@@ -10,7 +10,8 @@ _inputs:
   imports = [ wlib.wrapperModules.neovim ];
 
   # Lua config lives in ./nvim and is provisioned by nix.
-  config.settings.config_directory = ./nvim;
+  # mkDefault so variants (e.g. neovim-dev) can override it.
+  config.settings.config_directory = lib.mkDefault ./nvim;
 
   # Catppuccin flavor. When consuming this from NixOS/home-manager, sync it
   # with the rest of your system, e.g.:
