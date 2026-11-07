@@ -2,6 +2,7 @@
   description = "Portable Neovim configuration built with nix-wrapper-modules";
 
   inputs = {
+    systems.url = "github:nix-systems/default";
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst";
     wrappers = {
       url = "github:nix-community/nix-wrapper-modules";
@@ -16,19 +17,15 @@
   outputs =
     {
       self,
+      systems,
       nixpkgs,
       wrappers,
       treefmt-nix,
       ...
     }@inputs:
     let
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-      forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
+      forAllSystems =
+        f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
 
       module = nixpkgs.lib.modules.importApply ./module.nix inputs;
       wrapper = wrappers.lib.evalModule module;
