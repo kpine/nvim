@@ -35,6 +35,7 @@ vim.o.scrolloff = 10
 vim.o.signcolumn = "yes"
 vim.o.termguicolors = true
 vim.o.wrap = false
+vim.opt.shortmess:append("I")
 
 vim.o.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
