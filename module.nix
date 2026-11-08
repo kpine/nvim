@@ -40,6 +40,7 @@ _inputs:
 
   config.specs.general = {
     data = with pkgs.vimPlugins; [
+      mini-cmdline
       mini-icons
       mini-files
       mini-notify
