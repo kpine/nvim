@@ -46,6 +46,7 @@ _inputs:
       mini-notify
       mini-pick
       mini-statusline
+      mini-surround
     ];
   };
 
