@@ -42,6 +42,7 @@ _inputs:
     data = with pkgs.vimPlugins; [
       mini-icons
       mini-pick
+      mini-statusline
     ];
   };
 
