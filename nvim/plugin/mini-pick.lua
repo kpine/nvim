@@ -1,0 +1,10 @@
+local pick = require("mini.pick")
+pick.setup()
+
+vim.keymap.set("n", "<C-p>", pick.builtin.files, { desc = "Find files" })
+vim.keymap.set("n", "<leader><space>", pick.builtin.buffers, { desc = "Find buffers" })
+vim.keymap.set("n", "<leader>sg", pick.builtin.grep_live, { desc = "Live grep" })
+vim.keymap.set("n", "<leader>sh", pick.builtin.help, { desc = "Search help" })
+vim.keymap.set("n", "<leader>sw", function()
+	pick.builtin.grep({ pattern = vim.fn.expand("<cword>") })
+end, { desc = "Search current word" })

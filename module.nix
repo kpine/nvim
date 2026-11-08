@@ -37,4 +37,16 @@ _inputs:
       vim.cmd.colorscheme("catppuccin")
     '';
   };
+
+  config.specs.general = {
+    data = with pkgs.vimPlugins; [
+      mini-pick
+    ];
+  };
+
+  config.runtimePkgs = with pkgs; [
+    fd
+    git
+    ripgrep
+  ];
 }
