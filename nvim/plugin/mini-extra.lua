@@ -1,4 +1,5 @@
-require("mini.extra").setup()
+local extra = require("mini.extra")
+extra.setup()
 
-vim.keymap.set("n", "<leader>q", MiniExtra.pickers.diagnostic, { desc = "Show diagnostics" })
-vim.keymap.set("n", "<leader>sk", MiniExtra.pickers.keymaps, { desc = "Search keymaps" })
+vim.keymap.set("n", "<leader>q", extra.pickers.diagnostic, { desc = "Show diagnostics" })
+vim.keymap.set("n", "<leader>sk", extra.pickers.keymaps, { desc = "Search keymaps" })

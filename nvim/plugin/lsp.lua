@@ -1,6 +1,10 @@
 -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-vim.keymap.set("n", "gd", function() MiniExtra.pickers.lsp({ scope = "definition" }) end, { desc = "Go to definition" })
-vim.keymap.set("n", "grr", function() MiniExtra.pickers.lsp({ scope = "references" }) end, { desc = "Go to references" })
+vim.keymap.set("n", "gd", function()
+	require("mini.extra").pickers.lsp({ scope = "definition" })
+end, { desc = "Go to definition" })
+vim.keymap.set("n", "grr", function()
+	require("mini.extra").pickers.lsp({ scope = "references" })
+end, { desc = "Go to references" })
 
 vim.diagnostic.config({ virtual_text = true })
 
