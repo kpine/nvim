@@ -54,9 +54,35 @@ _inputs:
     ];
   };
 
+  config.specs.tree-sitter = {
+    after = [ "general" ];
+    data = with pkgs.vimPlugins; [
+      (nvim-treesitter.withPlugins (
+        plugins: with plugins; [
+          bash
+          beancount
+          comment
+          diff
+          dockerfile
+          http
+          javascript
+          json
+          # lua # included by default
+          # markdown # included by default
+          # markdown_inline # included by default
+          nix
+          python
+          typescript
+          yaml
+        ]
+      ))
+    ];
+  };
+
   config.runtimePkgs = with pkgs; [
     fd
     git
     ripgrep
+    tree-sitter
   ];
 }

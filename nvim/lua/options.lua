@@ -9,6 +9,9 @@ vim.o.smartindent = true
 vim.o.softtabstop = 2
 vim.o.tabstop = 2
 
+-- Folds (treesitter sets foldexpr per buffer in plugin/treesitter.lua)
+vim.o.foldlevel = 99 -- start with all folds open
+
 -- Search
 vim.o.ignorecase = true
 vim.o.inccommand = "split"
