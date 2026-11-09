@@ -76,6 +76,8 @@ _inputs:
           # markdown_inline # included by default
           nix
           python
+          rust
+          toml
           typescript
           yaml
         ]
@@ -88,9 +90,6 @@ _inputs:
     data = with pkgs.vimPlugins; [
       lazydev-nvim
     ];
-    # runtimePkgs = with pkgs; [
-    #   stylua
-    # ];
   };
 
   config.runtimePkgs = with pkgs; [
