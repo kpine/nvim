@@ -40,6 +40,7 @@ _inputs:
 
   config.specs.general = {
     data = with pkgs.vimPlugins; [
+      friendly-snippets
       mini-cmdline
       mini-completion
       mini-extra
@@ -47,6 +48,7 @@ _inputs:
       mini-files
       mini-notify
       mini-pick
+      mini-snippets
       mini-statusline
       mini-surround
     ];
