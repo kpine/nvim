@@ -51,6 +51,7 @@ _inputs:
       mini-snippets
       mini-statusline
       mini-surround
+      nvim-lspconfig
     ];
   };
 
@@ -79,10 +80,23 @@ _inputs:
     ];
   };
 
+  config.specs.lua = {
+    after = [ "general" ];
+    lazy = true;
+    data = with pkgs.vimPlugins; [
+      lazydev-nvim
+    ];
+    # runtimePkgs = with pkgs; [
+    #   stylua
+    # ];
+  };
+
   config.runtimePkgs = with pkgs; [
     fd
     git
+    lua-language-server
     ripgrep
+    stylua
     tree-sitter
   ];
 }

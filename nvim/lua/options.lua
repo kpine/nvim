@@ -30,7 +30,6 @@ vim.o.undofile = true
 -- Display
 vim.g.netrw_banner = 0
 vim.o.breakindent = true
-vim.o.cmdheight = 0
 vim.o.confirm = true
 vim.o.cursorline = true
 vim.o.laststatus = 3
