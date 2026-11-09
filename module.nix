@@ -33,7 +33,10 @@ _inputs:
     type = "lua";
     config = ''
       local info = ...
-      require("catppuccin").setup({ flavour = info.flavor })
+      require("catppuccin").setup({
+        flavour = info.flavor,
+        no_italic = true,
+      })
       vim.cmd.colorscheme("catppuccin")
     '';
   };
