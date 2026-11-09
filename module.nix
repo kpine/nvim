@@ -94,6 +94,8 @@ _inputs:
     fd
     git
     lua-language-server
+    nixd
+    nixfmt
     ripgrep
     stylua
     tree-sitter

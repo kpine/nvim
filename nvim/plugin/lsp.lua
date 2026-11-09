@@ -15,5 +15,6 @@ vim.lsp.config("*", { capabilities = capabilities })
 
 vim.lsp.enable({
 	"lua_ls",
+	"nixd",
 	"rust_analyzer",
 })

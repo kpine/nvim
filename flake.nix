@@ -84,7 +84,6 @@
         default = pkgs.mkShell {
           packages = [
             treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.wrapper
-            pkgs.nil
           ];
         };
       });
