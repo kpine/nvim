@@ -41,6 +41,7 @@ _inputs:
   config.specs.general = {
     data = with pkgs.vimPlugins; [
       mini-cmdline
+      mini-completion
       mini-extra
       mini-icons
       mini-files

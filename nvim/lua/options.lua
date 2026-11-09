@@ -40,6 +40,10 @@ vim.opt.shortmess:append("I")
 vim.o.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
+-- Completions
+vim.o.completeopt = "menuone,noselect,fuzzy,nosort"
+vim.opt.shortmess:append("c")
+
 -- Mouse
 vim.o.mouse = "a"
 
