@@ -82,7 +82,6 @@ _inputs:
 
   config.specs.lua = {
     after = [ "general" ];
-    lazy = true;
     data = with pkgs.vimPlugins; [
       lazydev-nvim
     ];

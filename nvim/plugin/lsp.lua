@@ -13,14 +13,6 @@ capabilities = vim.tbl_deep_extend("force", capabilities, require("mini.completi
 
 vim.lsp.config("*", { capabilities = capabilities })
 
-vim.lsp.config("lua_ls", {
-	settings = {
-		Lua = {
-			diagnostics = { globals = { "vim" } },
-		},
-	},
-})
-
 vim.lsp.config("rust_analyzer", {
 	settings = {
 		["rust-analyzer"] = {
