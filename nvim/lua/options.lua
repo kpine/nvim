@@ -36,6 +36,7 @@ vim.o.laststatus = 3
 vim.o.scrolloff = 10
 vim.o.signcolumn = "yes"
 vim.o.termguicolors = true
+vim.o.winborder = "rounded" -- default border for floating windows (LSP hover, diagnostics, ...)
 vim.o.wrap = false
 vim.opt.shortmess:append("I")
 
