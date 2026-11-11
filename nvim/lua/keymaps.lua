@@ -1,3 +1,7 @@
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
@@ -6,12 +10,6 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
--- Clear search
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
--- Replaces selected TEXT without losing what you yanked
-vim.keymap.set('x', 'p', [["_dP]], { desc = 'Paste over selection without losing yanked text' })
 
 -- Delete text without saving it to any register
 vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]], { desc = 'Delete without yanking' })
@@ -51,3 +49,7 @@ vim.keymap.set('n', '<leader>u', function()
   vim.cmd.packadd('nvim.undotree')
   require('undotree').open()
 end, { desc = 'Toggle Undotree' })
+
+-- Diff the windows in the current tab (works on unsaved buffers too), and turn it off again
+vim.keymap.set('n', '<leader>wd', '<cmd>windo diffthis<CR>', { desc = 'Diff windows in tab' })
+vim.keymap.set('n', '<leader>wo', '<cmd>diffoff!<CR>', { desc = 'Turn off diff in all windows' })
