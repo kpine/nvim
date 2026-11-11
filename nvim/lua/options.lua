@@ -35,6 +35,7 @@ vim.o.cursorline = true
 vim.o.laststatus = 3
 vim.o.scrolloff = 10
 vim.o.signcolumn = 'yes'
+vim.o.showmode = false
 vim.o.termguicolors = true
 vim.o.winborder = 'rounded' -- default border for floating windows (LSP hover, diagnostics, ...)
 vim.o.wrap = false
@@ -49,6 +50,8 @@ vim.opt.shortmess:append('c')
 
 -- Mouse
 vim.o.mouse = 'a'
+-- Wait this long (ms) for the rest of a multi-key mapping, e.g. <leader>s vs <leader>sg
+vim.o.timeoutlen = 500
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -56,6 +59,9 @@ vim.o.mouse = 'a'
 --  See `:help 'clipboard'`
 vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.hl.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('YankHighlight', { clear = true }),
