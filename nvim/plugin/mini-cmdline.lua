@@ -1,3 +1,3 @@
-require("mini.cmdline").setup({
-	autocorrect = { enable = false },
+require('mini.cmdline').setup({
+  autocorrect = { enable = false },
 })

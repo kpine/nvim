@@ -1,4 +1,4 @@
-local completion = require("mini.completion")
+local completion = require('mini.completion')
 
 -- After fuzzy filtering, order items by kind: snippets (from mini.snippets and from
 -- language servers) go below everything else, so fields, methods and variables come first.
@@ -6,9 +6,9 @@ local completion = require("mini.completion")
 local kind_priority = { Text = -1, Snippet = 99 }
 
 completion.setup({
-	lsp_completion = {
-		process_items = function(items, base)
-			return completion.default_process_items(items, base, { kind_priority = kind_priority })
-		end,
-	},
+  lsp_completion = {
+    process_items = function(items, base)
+      return completion.default_process_items(items, base, { kind_priority = kind_priority })
+    end,
+  },
 })
