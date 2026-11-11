@@ -8,10 +8,8 @@ end, { desc = "Go to references" })
 
 vim.diagnostic.config({ virtual_text = true })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend("force", capabilities, require("mini.completion").get_lsp_capabilities())
-
-vim.lsp.config("*", { capabilities = capabilities })
+-- Neovim merges these on top of vim.lsp.protocol.make_client_capabilities() itself.
+vim.lsp.config("*", { capabilities = require("mini.completion").get_lsp_capabilities() })
 
 vim.lsp.enable({
 	"lua_ls",
