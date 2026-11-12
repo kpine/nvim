@@ -5,7 +5,7 @@ _inputs:
   pkgs,
   wlib,
   ...
-}:
+}@top:
 {
   imports = [ wlib.wrapperModules.neovim ];
 
@@ -102,4 +102,15 @@ _inputs:
     stylua
     tree-sitter
   ];
+
+  # When installed via Home Manager, also make it the session's editor.
+  config.install.modules.homeManager =
+    { config, lib, ... }:
+    let
+      cfg = top.config.install.getWrapperConfig config;
+      nvim = lib.getExe cfg.wrapper;
+    in
+    {
+      home.sessionVariables = lib.mkIf cfg.enable { EDITOR = lib.mkDefault nvim; };
+    };
 }
