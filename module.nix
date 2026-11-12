@@ -103,14 +103,21 @@ _inputs:
     tree-sitter
   ];
 
-  # When installed via Home Manager, also make it the session's editor.
-  config.install.modules.homeManager =
-    { config, lib, ... }:
+  # When installed via Home Manager or NixOS, also make it the session's editor.
+  config.install.modules =
     let
-      cfg = top.config.install.getWrapperConfig config;
-      nvim = lib.getExe cfg.wrapper;
+      editor = cfg: lib.mkIf cfg.enable { EDITOR = lib.mkOverride 900 (lib.getExe cfg.wrapper); };
     in
     {
-      home.sessionVariables = lib.mkIf cfg.enable { EDITOR = lib.mkDefault nvim; };
+      homeManager =
+        { config, ... }:
+        {
+          home.sessionVariables = editor (top.config.install.getWrapperConfig config);
+        };
+      nixos =
+        { config, ... }:
+        {
+          environment.sessionVariables = editor (top.config.install.getWrapperConfig config);
+        };
     };
 }
