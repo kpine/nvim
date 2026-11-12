@@ -43,7 +43,6 @@
         default = self.wrappers.neovim;
       };
 
-      # `nix run .` / `nix shell .` / `nix build .`
       packages = forAllSystems (pkgs: rec {
         neovim = self.wrappers.neovim.wrap { inherit pkgs; };
         default = neovim;
@@ -74,9 +73,9 @@
           value = module;
         };
       };
+
       homeModules = {
         default = self.homeModules.neovim;
-        # they produce generically importable modules
         neovim = self.nixosModules.neovim;
       };
 

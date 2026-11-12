@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: DeterminateSystems/determinate-nix-action@96c5ee93a9dddf2830d31e1da6ec719077336c28 # v3.2.1
+
+      - name: Enable Nix binary cache
+        uses: DeterminateSystems/magic-nix-cache-action@84c0677f58dcedf3b91f8223ce36a9ea5b3c84b7 # v15
+        with:
+          use-flakehub: false
+
+      - uses: DeterminateSystems/flake-checker-action@786422608c7bded2bbc9741ad9f91356842bf520 # master
+        with:
+          ignore-missing-flake-lock: false
+          fail-mode: true
+
+      - name: Check flake
+        run: nix flake check --print-build-logs
+
+      - name: Smoke test
+        run: nix run .#neovim -- --headless -c 'luafile .github/smoke.lua'
