@@ -10,6 +10,9 @@ vim.keymap.set('n', 'grt', lsp_pick('type_definition'), { desc = 'Go to type def
 vim.keymap.set('n', 'gO', lsp_pick('document_symbol'), { desc = 'Document symbols' })
 vim.keymap.set('n', '<leader>sS', lsp_pick('workspace_symbol_live'), { desc = 'Search workspace symbols' })
 
+-- Format the buffer, or just the selection in visual mode, with whichever attached server can
+vim.keymap.set({ 'n', 'x' }, '<leader>fb', function() vim.lsp.buf.format() end, { desc = 'Format buffer/selection' })
+
 vim.diagnostic.config({
   severity_sort = true,
   float = { source = 'if_many' },
