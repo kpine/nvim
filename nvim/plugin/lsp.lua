@@ -19,7 +19,9 @@ vim.diagnostic.config({
 vim.lsp.config('*', { capabilities = require('mini.completion').get_lsp_capabilities() })
 
 vim.lsp.enable({
+  'basedpyright',
   'lua_ls',
   'nixd',
+  'ruff',
   'rust_analyzer',
 })
