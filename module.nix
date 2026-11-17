@@ -55,6 +55,8 @@ _inputs:
       mini-statusline
       mini-surround
       nvim-lspconfig
+      vim-fugitive
+      vim-rhubarb
     ];
   };
 
