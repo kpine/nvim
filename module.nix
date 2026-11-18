@@ -73,6 +73,7 @@ _inputs:
           http
           javascript
           json
+          just
           lua # bundled with Neovim, but nvim-treesitter's queries add comment/luadoc injections
           # markdown # included by default
           # markdown_inline # included by default
