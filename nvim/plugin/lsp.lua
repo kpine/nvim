@@ -27,4 +27,5 @@ vim.lsp.enable({
   'nixd',
   'ruff',
   'rust_analyzer',
+  'ty',
 })
